@@ -475,36 +475,18 @@
   background: var(--bg-tertiary);
 }
 
-/* адаптив */
-
+/* Адаптив */
 @media (min-width: 768px) {
-  .app-header {
-    left: calc(240px + var(--space-md));
-    right: var(--space-md);
-    top: var(--space-md);
-    border-radius: var(--radius-xl);
-    box-shadow: var(--shadow-md);
-    border-bottom: none;
+  .container,
+  .app-main,
+  .app-header__content {
+    max-width: 600px;
   }
   
-  .app {
-    padding-left: calc(240px + var(--space-lg));
-  }
-
-  .app-main {
-    padding: calc(var(--space-md) + 80px) var(--space-xl) var(--space-md);
-    padding-bottom: var(--space-md);
-  }
-}
-
-@media (min-width: 1024px) {
-  .app-header {
-    left: calc(280px + var(--space-lg));
-    right: var(--space-lg);
-    top: var(--space-lg);
-  }
-  
-  .app {
-    padding-left: calc(280px + var(--space-xl));
+  .tab-bar {
+    position: relative;
+    border-top: none;
+    border-bottom: 1px solid var(--bg-tertiary);
+    padding-bottom: var(--space-sm);
   }
 }

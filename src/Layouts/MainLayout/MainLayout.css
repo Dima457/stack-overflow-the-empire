@@ -1,0 +1,19 @@
+/* src/layouts/MainLayout.css */
+.main-layout {
+  min-height: 100vh;
+  background: var(--bg-primary);
+}
+
+.main-layout__header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  /* ... */
+}
+
+.main-layout__content {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: var(--space-md);
+  padding-bottom: 100px; /* отступ для сайдбара */
+}
