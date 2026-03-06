@@ -97,29 +97,7 @@ export function ProfilePage() {
         </div>
       </section>
 
-      {/* Bottom Navigation */}
-      <nav className="bottom-nav">
-        <button className="nav-item active">
-          <span className="nav-icon">📊</span>
-          <span className="nav-label">Инвестиции</span>
-        </button>
-        <button className="nav-item">
-          <span className="nav-icon">🏢</span>
-          <span className="nav-label">Бизнес</span>
-        </button>
-        <button className="nav-item">
-          <span className="nav-icon">💰</span>
-          <span className="nav-label">Заработок</span>
-        </button>
-        <button className="nav-item">
-          <span className="nav-icon">🎁</span>
-          <span className="nav-label">Предметы</span>
-        </button>
-        <button className="nav-item">
-          <span className="nav-icon">👤</span>
-          <span className="nav-label">Профиль</span>
-        </button>
-      </nav>
+      
     </div>
   );
 }
