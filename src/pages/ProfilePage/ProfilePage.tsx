@@ -32,7 +32,7 @@ export function ProfilePage() {
     { label: 'На дивидендах', value: '$ 0,00' },
     { label: 'На трейдинге', value: '$ 0,00' },
     { label: 'На криптоторговле', value: '$ 0,00' },
-    { label: 'На торговле драгоценностями', value: '$ 0,00' },
+    { label: 'на работе', value: '$ 0,00' },
   ];
 
   const formatMoney = (amount: number) => {
