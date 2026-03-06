@@ -1,0 +1,517 @@
+/* CareerPage.css */
+.career-page {
+  min-height: 100vh;
+  background: var(--bg-primary);
+  padding-bottom: 100px;
+}
+
+.career-header {
+  background: var(--accent-gradient);
+  padding: var(--space-xl) var(--space-md);
+  padding-top: calc(var(--space-xl) + env(safe-area-inset-top));
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.career-header::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 300px;
+  height: 300px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  animation: float 6s ease-in-out infinite;
+}
+
+.career-header::after {
+  content: '';
+  position: absolute;
+  bottom: -30%;
+  left: -10%;
+  width: 200px;
+  height: 200px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
+  animation: float 8s ease-in-out infinite reverse;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(5deg); }
+}
+
+.career-header__title {
+  font-size: 1.75rem;
+  font-weight: 800;
+  margin-bottom: var(--space-xs);
+  position: relative;
+  z-index: 1;
+}
+
+.career-header__subtitle {
+  opacity: 0.9;
+  font-size: 0.9375rem;
+  position: relative;
+  z-index: 1;
+}
+
+.career-path {
+  padding: var(--space-lg) var(--space-md);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.career-level {
+  position: relative;
+  margin-bottom: var(--space-lg);
+  animation: fadeIn 0.5s ease backwards;
+}
+
+.career-level:nth-child(1) { animation-delay: 0.1s; }
+.career-level:nth-child(2) { animation-delay: 0.2s; }
+.career-level:nth-child(3) { animation-delay: 0.3s; }
+.career-level:nth-child(4) { animation-delay: 0.4s; }
+.career-level:nth-child(5) { animation-delay: 0.5s; }
+.career-level:nth-child(6) { animation-delay: 0.6s; }
+.career-level:nth-child(7) { animation-delay: 0.7s; }
+.career-level:nth-child(8) { animation-delay: 0.8s; }
+
+/* Соединительная линия между уровнями */
+.career-level:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: 32px;
+  top: 64px;
+  width: 2px;
+  height: calc(100% + var(--space-md));
+  background: var(--bg-tertiary);
+  z-index: 0;
+}
+
+.career-level--completed:not(:last-child)::after,
+.career-level--current:not(:last-child)::after {
+  background: var(--accent-gradient);
+}
+
+.level-card {
+  background: var(--bg-secondary);
+  border-radius: var(--radius-xl);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-md);
+  display: flex;
+  gap: var(--space-md);
+  position: relative;
+  z-index: 1;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.level-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.level-card--locked {
+  opacity: 0.6;
+  background: var(--bg-tertiary);
+}
+
+.level-card--available {
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1), var(--shadow-lg);
+  animation: pulse-border 2s infinite;
+}
+
+.level-card--current {
+  border-color: var(--success);
+  box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.1), var(--shadow-lg);
+}
+
+.level-card--completed {
+  border-color: var(--success);
+}
+
+@keyframes pulse-border {
+  0%, 100% { box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1), var(--shadow-lg); }
+  50% { box-shadow: 0 0 0 8px rgba(79, 70, 229, 0.05), var(--shadow-lg); }
+}
+
+.level-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.75rem;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.level-icon::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.2;
+}
+
+/* Градиенты для каждого уровня */
+.level-1 .level-icon { background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); }
+.level-2 .level-icon { background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%); }
+.level-3 .level-icon { background: linear-gradient(135deg, #10b981 0%, #059669 100%); }
+.level-4 .level-icon { background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); }
+.level-5 .level-icon { background: linear-gradient(135deg, #ec4899 0%, #db2777 100%); }
+.level-6 .level-icon { background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%); }
+.level-7 .level-icon { background: linear-gradient(135deg, #14b8a6 0%, #0d9488 100%); }
+.level-8 .level-icon { background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); }
+
+.level-icon__badge {
+  position: absolute;
+  bottom: -4px;
+  right: -4px;
+  width: 24px;
+  height: 24px;
+  background: var(--success);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  border: 2px solid var(--bg-secondary);
+  color: white;
+}
+
+.level-icon__lock {
+  position: absolute;
+  bottom: -4px;
+  right: -4px;
+  width: 24px;
+  height: 24px;
+  background: var(--text-muted);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  border: 2px solid var(--bg-secondary);
+  color: white;
+}
+
+.level-icon__start {
+  position: absolute;
+  bottom: -4px;
+  right: -4px;
+  width: 24px;
+  height: 24px;
+  background: var(--accent-primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  border: 2px solid var(--bg-secondary);
+  color: white;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+.level-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.level-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--space-xs);
+  gap: var(--space-sm);
+}
+
+.level-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.level-badge {
+  font-size: 0.75rem;
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+.level-badge--education {
+  background: rgba(245, 158, 11, 0.15);
+  color: #d97706;
+}
+
+.level-badge--work {
+  background: rgba(16, 185, 129, 0.15);
+  color: #059669;
+}
+
+.level-description {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-md);
+  line-height: 1.5;
+}
+
+.level-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+}
+
+.level-cost {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.level-cost--expense {
+  color: var(--danger);
+}
+
+.level-cost--income {
+  color: var(--success);
+}
+
+.level-cost__icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+}
+
+.level-cost--expense .level-cost__icon {
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--danger);
+}
+
+.level-cost--income .level-cost__icon {
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--success);
+}
+
+.level-button {
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.level-button--start {
+  background: var(--accent-gradient);
+  color: white;
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+  animation: pulse-button 2s infinite;
+}
+
+@keyframes pulse-button {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.level-button--start:hover {
+  transform: translateY(-1px) scale(1.05);
+  box-shadow: 0 6px 16px rgba(79, 70, 229, 0.4);
+}
+
+.level-button--start:active {
+  transform: translateY(0) scale(1);
+}
+
+.level-button--work {
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--success);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.level-button--work:hover {
+  background: rgba(16, 185, 129, 0.2);
+}
+
+.level-button--completed {
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--success);
+  cursor: default;
+}
+
+.level-button--locked {
+  background: var(--bg-tertiary);
+  color: var(--text-muted);
+  cursor: not-allowed;
+}
+
+.level-progress {
+  margin-top: var(--space-md);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--bg-tertiary);
+}
+
+.level-progress__header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-bottom: var(--space-xs);
+}
+
+.level-progress__bar {
+  height: 6px;
+  background: var(--bg-tertiary);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.level-progress__fill {
+  height: 100%;
+  background: var(--accent-gradient);
+  border-radius: 3px;
+  transition: width 0.5s ease;
+}
+
+/* Специальные эффекты для топовых уровней */
+.level-7 .level-card,
+.level-8 .level-card {
+  background: linear-gradient(135deg, var(--bg-secondary) 0%, #fafafa 100%);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  position: relative;
+}
+
+.level-7 .level-card::before,
+.level-8 .level-card::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: var(--radius-xl);
+  padding: 2px;
+  background: linear-gradient(135deg, #14b8a6 0%, #0d9488 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0.5;
+}
+
+.level-8 .level-card::before {
+  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%, #fbbf24 50%, #f97316 100%);
+  background-size: 200% 200%;
+  animation: gradient-shift 3s ease infinite;
+  opacity: 1;
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* Анимация для доступного уровня */
+.level-card--available .level-icon {
+  animation: glow-available 2s ease-in-out infinite;
+}
+
+@keyframes glow-available {
+  0%, 100% { box-shadow: 0 0 20px rgba(79, 70, 229, 0.3); }
+  50% { box-shadow: 0 0 30px rgba(79, 70, 229, 0.5); }
+}
+
+/* Мобильная адаптация */
+@media (max-width: 480px) {
+  .level-card {
+    padding: var(--space-md);
+  }
+  
+  .level-icon {
+    width: 56px;
+    height: 56px;
+    font-size: 1.5rem;
+  }
+  
+  .level-title {
+    font-size: 1rem;
+  }
+  
+  .level-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-sm);
+  }
+  
+  .level-button {
+    width: 100%;
+  }
+}
+
+/* Статистика в шапке */
+.career-stats {
+  display: flex;
+  gap: var(--space-lg);
+  margin-top: var(--space-md);
+  position: relative;
+  z-index: 1;
+}
+
+.career-stat {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.career-stat__value {
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+
+.career-stat__label {
+  font-size: 0.75rem;
+  opacity: 0.8;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Призыв к действию для первого уровня */
+.level-1 .level-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.level-1 .level-card::before {
+  content: 'НАЧНИ ЗДЕСЬ';
+  position: absolute;
+  top: 8px;
+  right: -30px;
+  background: var(--accent-primary);
+  color: white;
+  font-size: 0.625rem;
+  font-weight: 800;
+  padding: 4px 30px;
+  transform: rotate(45deg);
+  letter-spacing: 0.1em;
+}
