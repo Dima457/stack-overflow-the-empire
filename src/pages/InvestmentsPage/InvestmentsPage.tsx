@@ -1,7 +1,19 @@
-import './InvestmentsPage.css'
+import './InvestmentsPage.css';
+import { ModeSwitcher } from '../../component/Sidebar/UI/ModeSwitcher/ModeSwitcher';
 export function InvestmentsPage(){
-    return(<div>
-        <h1>InvestmentsPage</h1>
-    </div>)
+    
+    return(
+    
+
+<div>
+
+
+
+
+    
+
+
+</div>
+    )
     
 }
