@@ -1,4 +1,6 @@
 import './LifePage.css';
+import { ThingsForLifePage } from '../../component/ThingsForLifePage/ThingsForLifePage';
+import { collectionData } from '../../component/ThingsForLifePage/ThingsForLifePage';
 export function LifePage() {
   return (
     <div className="life-page">
@@ -6,6 +8,9 @@ export function LifePage() {
         {/* Предметы Section */}
         <h2 className="section-title">Предметы</h2>
         
+
+
+
         {/* Property Cards */}
         <div className="property-grid">
           <div className="property-card">
@@ -34,6 +39,10 @@ export function LifePage() {
           </div>
         </div>
 
+
+
+
+
         {/* Category Tabs */}
         <div className="category-tabs">
           <button className="category-tab">
@@ -50,6 +59,10 @@ export function LifePage() {
           </button>
         </div>
 
+
+
+
+
         {/* Divider */}
         <div className="divider"></div>
 
@@ -59,58 +72,11 @@ export function LifePage() {
         {/* Collections Grid */}
         <div className="collections-grid">
           {/* Regular collection cards - 2 per row */}
-          <div className="collection-card">
-            <div className="collection-card__icon">🪙</div>
-            <div className="collection-card__title">Монеты</div>
-            <div className="collection-card__progress">0 из 20</div>
-          </div>
+          
+            <ThingsForLifePage items={collectionData}/>
+          
 
-          <div className="collection-card">
-            <div className="collection-card__icon">🎨</div>
-            <div className="collection-card__title">Картины</div>
-            <div className="collection-card__progress">0 из 25</div>
-          </div>
-
-          <div className="collection-card">
-            <div className="collection-card__icon">💎</div>
-            <div className="collection-card__title">Уникальные предметы</div>
-            <div className="collection-card__progress">0 из 5</div>
-          </div>
-
-          <div className="collection-card">
-            <div className="collection-card__icon">🚗</div>
-            <div className="collection-card__title">Ретро автомобили</div>
-            <div className="collection-card__progress">0 из 20</div>
-          </div>
-
-          <div className="collection-card">
-            <div className="collection-card__icon">👑</div>
-            <div className="collection-card__title">Драгоценности</div>
-            <div className="collection-card__progress">0 из 20</div>
-          </div>
-
-          <div className="collection-card">
-            <div className="collection-card__icon">🗳️</div>
-            <div className="collection-card__title">Марки</div>
-            <div className="collection-card__progress">0 из 15</div>
-          </div>
-
-          {/* Wide collection cards */}
-          <div className="collection-card collection-card--wide">
-            <div className="collection-card__icon collection-card__icon--large">🎖️</div>
-            <div className="collection-card__content">
-              <div className="collection-card__title">Знаки отличия</div>
-              <div className="collection-card__progress">0 из 5</div>
-            </div>
-          </div>
-
-          <div className="collection-card collection-card--wide">
-            <div className="collection-card__icon collection-card__icon--large">🖼️</div>
-            <div className="collection-card__content">
-              <div className="collection-card__title">NFT</div>
-              <div className="collection-card__progress">0 из 21</div>
-            </div>
-          </div>
+          
 
           {/* Full width image card */}
           <div className="collection-card collection-card--image">

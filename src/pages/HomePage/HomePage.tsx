@@ -3,6 +3,8 @@ import './HomePage.css';
 export function HomePage() {
   return (
     <>
+
+
       {/* Секция с банковской картой */}
       <section className="section">
         <div className="bank-card">
@@ -17,6 +19,9 @@ export function HomePage() {
           <div className="bank-card__tap-hint">Тапай для заработка</div>
         </div>
       </section>
+
+
+
 
       {/* Пассивный доход */}
       <section className="section">
@@ -35,6 +40,11 @@ export function HomePage() {
           </div>
         </div>
       </section>
+
+
+
+
     </>
+
   );
 }
