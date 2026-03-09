@@ -1,27 +1,43 @@
+import { useEffect, useState } from 'react';
 import './HomePage.css';
 
+interface Money {
+  moneyClicker: number;
+}
+
 export function HomePage() {
+  const [moneyUpBalance, setMoneyUpBalance] = useState<Money>(() => {
+    const saved = localStorage.getItem('UnityMoney');
+    return saved ? JSON.parse(saved) : { moneyClicker: 0 };
+  });
+
+  useEffect(() => {
+    localStorage.setItem('UnityMoney', JSON.stringify(moneyUpBalance));
+  }, [moneyUpBalance]);
+
+  const handleClick = () => {
+    setMoneyUpBalance(prev => ({
+      ...prev,
+      moneyClicker: prev.moneyClicker + 1 
+    }));
+  };
+
   return (
     <>
-
-
       {/* Секция с банковской картой */}
       <section className="section">
-        <div className="bank-card">
+        <div className="bank-card" onClick={handleClick}> 
           <div className="bank-card__chip"></div>
           <div className="bank-card__balance">
             <div className="bank-card__balance-label">Баланс</div>
             <div className="bank-card__balance-value">
               <span className="coin-icon">$</span>
-              <span>0</span>
+              <span>{moneyUpBalance.moneyClicker}</span>
             </div>
           </div>
           <div className="bank-card__tap-hint">Тапай для заработка</div>
         </div>
       </section>
-
-
-
 
       {/* Пассивный доход */}
       <section className="section">
@@ -40,11 +56,6 @@ export function HomePage() {
           </div>
         </div>
       </section>
-
-
-
-
     </>
-
   );
 }

@@ -26,7 +26,7 @@ export function ProfilePage() {
   ];
 
   const earnings = [
-    { label: 'В кликере', value: '$ 0,00' },
+    { label: 'В кликере', value: moneyBalance },
     { label: 'В бизнесе', value: '$ 0,00' },
     { label: 'На аренде', value: '$ 0,00' },
     { label: 'На дивидендах', value: '$ 0,00' },
@@ -35,9 +35,12 @@ export function ProfilePage() {
     { label: 'на работе', value: '$ 0,00' },
   ];
 
-  const formatMoney = (amount: number) => {
+  const formatMoney = (amount: any) => {
     return `$ ${amount.toFixed(2).replace('.', ',')}`;
   };
+
+  const moneySaved = localStorage.getItem('UnityMoney');
+  var moneyBalance = moneySaved? JSON.parse(moneySaved).moneyClicker:0
 
   return (
     <div className="profile-page">
@@ -52,7 +55,7 @@ export function ProfilePage() {
 
       {/* Balance Section */}
       <section className="balance-section">
-        <div className="total-balance">{formatMoney(0)}</div>
+        <div className="total-balance">{formatMoney(moneyBalance)}</div>
         <div className="balance-label">Состояние</div>
         <div className="progress-bar">
           <div className="progress-fill"></div>
