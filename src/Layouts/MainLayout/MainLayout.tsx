@@ -11,7 +11,7 @@ export function MainLayout() {
       {/* Хедер */}
       <header className="app-header">
         <div className="app-header__content">
-          <h1 className="app-header__title">IT Tycoon</h1>
+          <h1 className="app-header__title">Stack overflow: The Empire</h1>
           <div className="app-header__stats">
           </div>
         </div>
