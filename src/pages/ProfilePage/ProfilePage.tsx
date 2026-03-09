@@ -1,46 +1,26 @@
-// ProfilePage.jsx
+/// ProfilePage.tsx
 import './ProfilePage.css';
+import useMoneyStore from 'data/useMoneyStore';
+import { assets,stats, earnings } from 'data/profileData';
+import { useEffect } from 'react';
 
 export function ProfilePage() {
-  const assets = [
-    { name: 'Баланс', value: 0.00, color: '#4A90A4' },
-    { name: 'Бизнесы', value: 0.00, color: '#E85D5D' },
-    { name: 'Акции', value: 0.00, color: '#F5A623' },
-    { name: 'Недвижимость', value: 0.00, color: '#9B7ED9' },
-    { name: 'Транспорт', value: 0.00, color: '#6AB04C' },
-    { name: 'Коллекции', value: 0.00, color: '#5D8BF4' },
-    { name: 'Криптоактивы', value: 0.00, color: '#4ECDC4' },
-    { name: 'Резиденция', value: 0.00, color: '#1E3A8A' },
-  ];
+  const { clickerMoney, loadFromStorage } = useMoneyStore();
 
-  const stats = [
-    { label: 'Кол-во бизнесов', value: '0' },
-    { label: 'Недвижимость', value: '0 из 138' },
-    { label: 'Выкуплено компаний', value: '0 из 50' },
-    { label: 'Автомобилей', value: '0' },
-    { label: 'Летательных средств', value: '0' },
-    { label: 'Яхты', value: '0' },
-    { label: 'Коллекционных предметов', value: '0' },
-    { label: 'Островов', value: '0' },
-    { label: 'NFT', value: '0' },
-  ];
+  useEffect(() => {
+    loadFromStorage();
+  }, []);
 
-  const earnings = [
-    { label: 'В кликере', value: moneyBalance },
-    { label: 'В бизнесе', value: '$ 0,00' },
-    { label: 'На аренде', value: '$ 0,00' },
-    { label: 'На дивидендах', value: '$ 0,00' },
-    { label: 'На трейдинге', value: '$ 0,00' },
-    { label: 'На криптоторговле', value: '$ 0,00' },
-    { label: 'на работе', value: '$ 0,00' },
-  ];
-
-  const formatMoney = (amount: any) => {
+  const formatMoney = (amount: number) => {
     return `$ ${amount.toFixed(2).replace('.', ',')}`;
   };
 
-  const moneySaved = localStorage.getItem('UnityMoney');
-  var moneyBalance = moneySaved? JSON.parse(moneySaved).moneyClicker:0
+  // Обновляем значение баланса в assets
+  const updatedAssets = assets.map(asset => 
+    asset.name === 'Баланс' 
+      ? { ...asset, value: clickerMoney }
+      : asset
+  );
 
   return (
     <div className="profile-page">
@@ -55,7 +35,7 @@ export function ProfilePage() {
 
       {/* Balance Section */}
       <section className="balance-section">
-        <div className="total-balance">{formatMoney(moneyBalance)}</div>
+        <div className="total-balance">{formatMoney(clickerMoney)}</div>
         <div className="balance-label">Состояние</div>
         <div className="progress-bar">
           <div className="progress-fill"></div>
@@ -64,7 +44,7 @@ export function ProfilePage() {
 
       {/* Assets Grid */}
       <section className="assets-grid">
-        {assets.map((asset, index) => (
+        {updatedAssets.map((asset, index) => (
           <div key={index} className="asset-card">
             <div className="asset-color-bar" style={{ backgroundColor: asset.color }}></div>
             <div className="asset-info">
@@ -74,8 +54,6 @@ export function ProfilePage() {
           </div>
         ))}
       </section>
-
-      
 
       {/* Stats Section */}
       <section className="stats-section">
@@ -94,13 +72,15 @@ export function ProfilePage() {
           {earnings.map((item, index) => (
             <div key={index} className="stat-row">
               <span className="stat-label">{item.label}</span>
-              <span className="stat-value">{item.value}</span>
+              <span className="stat-value">
+                {item.label === 'В кликере' 
+                  ? formatMoney(clickerMoney)
+                  : '$ 0,00'}
+              </span>
             </div>
           ))}
         </div>
       </section>
-
-      
     </div>
   );
 }

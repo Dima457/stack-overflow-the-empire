@@ -13,10 +13,6 @@ export function MainLayout() {
         <div className="app-header__content">
           <h1 className="app-header__title">IT Tycoon</h1>
           <div className="app-header__stats">
-            <span className="coin-display">
-              <span className="coin-icon">$</span>
-              <span>0</span>
-            </span>
           </div>
         </div>
       </header>
